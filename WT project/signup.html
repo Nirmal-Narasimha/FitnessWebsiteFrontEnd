@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>SIGNUP</title>
+</head>
+<style>
+    body {
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 20px;
+        color: rgb(209, 209, 201);
+        background-image: url("wall.png");
+        background-position: right;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 800px;
+    }
+    
+    input[type=text],
+    select {
+        width: 60%;
+        padding: 12px 20px;
+        margin: 5px 0px;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: content-box;
+    }
+    
+    input[type=email],
+    select {
+        width: 60%;
+        padding: 12px 20px;
+        margin: 5px 0px;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: content-box;
+    }
+    
+    input[type=password],
+    select {
+        width: 60%;
+        padding: 12px 20px;
+        margin: 5px 0px;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: content-box;
+    }
+    
+    input[type=submit] {
+        width: 100%;
+        background-color: rgb(0, 0, 0);
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        color: white;
+        padding: 14px 20px;
+        margin: 5px 0;
+        border: none;
+        border-radius: 90px;
+        cursor: pointer;
+    }
+    
+    input[type=submit]:hover {
+        background-color: #6a6d6a;
+    }
+    
+    div {
+        width: 40%;
+        border-radius: 10px;
+        background-color: rgb(207, 205, 205);
+        opacity: 0.9;
+        color: rgb(0, 0, 0);
+        font-style: italic;
+        font-weight: bolder;
+        padding: 6.5px;
+    }
+    
+    div.a {
+        text-indent: 250px;
+    }
+    
+    h1 {
+        background-image: linear-gradient(to right, rgb(0, 0, 0), rgb(22, 29, 59));
+        color: rgb(255, 255, 255);
+        font-size: larger;
+        text-align: center;
+        font-style: italic;
+    }
+    
+    .btn-group .button {
+        background-color: rgb(23, 33, 53);
+        /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        cursor: pointer;
+        float: left;
+    }
+    
+    .btn-group .button:hover {
+        background-color: rgb(117, 117, 126);
+    }
+    
+    a {
+        font-size: 30px;
+        font-style: oblique;
+        text-align: center;
+        color: rgb(255, 255, 255);
+        text-align: center;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+</style>
+
+<body>
+
+    <script>
+        function myFunction() {
+            var count = 0;
+            var x = document.forms["form1"]["name"].value;
+            var u = document.forms["form1"]["uname"].value;
+            var e = document.forms["form1"]["email"].value;
+            var p = document.forms["form1"]["pass"].value;
+            var cp = document.forms["form1"]["cpass"].value;
+            if (x == "" || x == null || u == "" || u == null || e == "" || e == null || p == "" || p == null || cp == "" || cp == null) {
+                alert("All fields needed");
+                return;
+            }
+            var letters = /^[A-Za-z]+$/;
+            if (x.match(letters)) {
+                count = count + 1;
+            } else {
+                alert("Please enter valid name");
+            }
+
+            if (u.length > 15) {
+                alert("Username within 10 characters");
+            } else {
+                count = count + 1;
+            }
+
+            if (/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test(e)) {
+                count = count + 1;
+            } else {
+                alert("Enter a valid email");
+            }
+
+            var paswd = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
+            if (p.match(paswd)) {
+                count = count + 1;
+            } else {
+                alert("Enter a valid password between 8-15characters 1 Upper case,1 Lower case,1 Number and 1 special character");
+            }
+            if (p !== cp) {
+                alert("Passwords dont match");
+            } else {
+                count = count + 1;
+            }
+            if (count == 5) {
+                alert("Your details have been confirmed");
+            }
+        }
+    </script>
+    <p class="btn-group">
+        <button class="button"><a href="home.html">HOME</a></button>
+        <button class="button"><a href="bodyanal.html">BODY ANALYSIS</a></button>
+        <button class="button"><a href="highway.html">WORKOUTS</a></button>
+        <button class="button"><a href="bmr.html">NUTRITION</a></button>
+
+    </p>
+
+    <h1 style="clear:both">Sign-Up</h1>
+    <div>
+        <form name="form1" onsubmit="myFunction()">Name :
+            <div class="a"><input type="text" name="name" size="20" maxlength="10" placeholder="Enter Name" /></div><br>Username :
+            <div class="a"><input type="text" name="uname" size="15" maxlength="20" placeholder="Enter Username" /></div><br>E-mail :
+            <div class="a"><input type="email" name="email" placeholder="abc@example.com" /></div><br>Password :
+            <div class="a"><input type="password" name="pass" placeholder="8-16char1Upper1Lower1special1Number" /></div><br>Confirm Password :
+            <div class="a"><input type="password" name="cpass" />
+                <div class="a"><input type="submit" value="SUBMIT" /></div>
+        </form>
+        </div>
+</body>
+
+</html>

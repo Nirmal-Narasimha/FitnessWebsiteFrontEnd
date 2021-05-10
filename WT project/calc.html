@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>CALCULATE</title>
+
+</head>
+<style>
+    body {
+        background-image: linear-gradient(to right, rgb(95, 155, 184), rgb(79, 79, 105));
+        font-size: x-large;
+        font-style: italic;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        text-align: justify;
+    }
+    
+    p {
+        color: black;
+        font-size: 30px;
+        font-style: italic;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+    
+    p.center {
+        text-align: center;
+        color: black;
+    }
+    
+    input[type=text] {
+        font-size: 20px;
+        border: 5px;
+        border-color: red;
+        border-radius: 5px;
+        width: 30%;
+        padding: 12px 20px;
+        margin: 8px 0px;
+        box-sizing: content-box;
+    }
+    
+    div {
+        height: 40%;
+        width: 40%;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 10px;
+        background-color: #9ac0cc;
+        padding: 10px;
+    }
+    
+    div.a {
+        text-indent: 150px;
+    }
+    
+    input[type=submit] {
+        width: 100%;
+        background-color: rgb(28, 30, 71);
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        color: rgb(252, 252, 252);
+        padding: 14px 20px;
+        margin: 5px 0;
+        border: none;
+        border-radius: 90px;
+        cursor: pointer;
+    }
+    
+    input[type=submit]:hover {
+        background-color: #7b98b3;
+    }
+    
+    .btn-group .button {
+        background-color: rgb(89, 143, 170);
+        /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        cursor: pointer;
+        float: left;
+    }
+    
+    .btn-group .button:hover {
+        background-color: rgb(70, 70, 80);
+    }
+    
+    a {
+        font-size: 30px;
+        font-style: oblique;
+        text-align: center;
+        color: rgb(255, 255, 255);
+        text-align: center;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+</style>
+
+
+
+<body>
+    <script type="text/javascript">
+        function calcFunc() {
+            var a = Number(document.calc.age.value);
+            var g;
+            var ele = document.getElementsByName('gender');
+
+            for (i = 0; i < ele.length; i++) {
+                if (ele[i].checked) {
+                    g = ele[i].value;
+                }
+            }
+            var h = Number(document.calc.height.value);
+            var w = Number(document.calc.weight.value);
+            var n = Number(document.calc.neck.value);
+            var wa = Number(document.calc.waist.value);
+            var hi = Number(document.calc.hip.value);
+            if (a == "" || a == null || g == "" || g == null || h == "" || h == null || w == "" || w == null || n == "" || n == null || wa == "" || wa == null || hi == "" || hi == null) {
+                alert("Please enter all the fields");
+                return;
+            }
+            if (isNaN(w) || isNaN(h) || isNaN(a) || isNaN(n) || isNaN(wa) || isNaN(hi)) {
+                alert("Enter proper numerical values");
+                return;
+            }
+            var wnm = Math.log10(wa - n);
+            var wnf = Math.log10(wa + hi - n);
+            var hei = Math.log10(h);
+            var res;
+            if (g == "male") {
+                res = (495 / ((1.0324 - (0.19077 * wnm)) + (0.15456 * hei))) - 450;
+            } else if (g == "female") {
+                res = (495 / ((1.29579 - (0.35004 * wnf)) + (0.22100 * hei))) - 450;
+            } else {
+                alert("Gender needed");
+            }
+
+            alert(res);
+            document.calc.res.value = res;
+
+
+
+
+
+
+
+        }
+    </script>
+    <p class="btn-group">
+        <button class="button"><a href="home.html">HOME</a></button>
+    </p>
+
+
+    <h1 style="text-align: center;clear: both;"><u>CALCULATING BMI AND BODY FAT PERCENTAGE</u></h1>
+    <p>Please enter the required details to calculate your BMI and Body fat percentages</p>
+    <div>
+        <form name="calc" onsubmit="calcFunc();return false">
+            AGE:
+            <div class="a">
+                <input type="text" name="age" size="20" maxlength="2" placeholder="years" /></div>GENDER:
+
+
+            <input type="radio" name="gender" value="male" id="male" />MALE
+            <input type="radio" name="gender" value="female" id="female" /> FEMALE
+            <br> <br><br>HEIGHT:
+            <div class="a">
+
+                <input type="text" name="height" size="10" maxlength="3" placeholder="cm" /></div> WEIGHT:
+            <div class="a">
+
+                <input type="text" name="weight" size="10" maxlength="3" placeholder="kg" /></div> NECK:
+            <div class="a">
+
+                <input type="text" name="neck" size="10" maxlength="3" placeholder="cm" /></div>WAIST:
+            <div class="a">
+
+                <input type="text" name="waist" size="10" maxlength="3" placeholder="cm" /></div> HIP:
+            <div class="a">
+
+                <input type="text" name="hip" size="10" maxlength="3" placeholder="cm" /></div>
+            <div class="a"><input type="submit" value="CALCULATE" /></div>BODY FAT %:
+            <div class="a"><input type="text" name="res" /></div>
+        </form>
+    </div>
+    <p id="result">Dont trust the calculator?Here are the formulae which you may use!<br>
+        <h4>BMI formula</h4> Below are the equations used for calculating BMI in the International System of Units (SI):SI<br>BMI = mass (kg)/ height^2 (m^2)
+        <br>
+        <h4>BODY FAT PERCENTAGE</h4>MEN:BFP=(495/(1.0324-0.19077*log10(waist-neck)+0.15456*log10(height))-450)<br>FEMALE:(495/(1.29579-0.35004*log10(waist+hip-neck)+0.22100*log10(height))-450)
+
+    </p><br><br>
+
+
+</body>
+
+</html>
